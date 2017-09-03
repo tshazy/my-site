@@ -17,9 +17,10 @@
     </nav>
     <div class="container">
         <div class="blurb">
+          <h1>About</h1>
           <p>Grew up in LA, then migrated to Northern California in 2005 to attend Stanford. Got a degree in Product Design and now can&#39;t stop thinking about products...</p>
-          <p>In 2011 I founded <a href="http://www.mindsumo.com" target="_blank">MindSumo</a>. It&#39;s a platform that helps companies solve problems by crowdsourcing new ideas from students and recent grads. Today we have 300,000+ registered users and nearly 100 of the Fortune 500 using the site.</p>
-          <p>In 2017 my wife and I started a full-time MBA back at Stanford.</p>
+          <p>Founded <a href="http://www.mindsumo.com" target="_blank">MindSumo</a> in 2011 to help companies solve problems by crowdsourcing new ideas from students and recent grads. Grown to 300,000+ registered users and nearly 100 of the Fortune 500 clients.</p>
+          <p>My wife and I started a full-time MBA back at Stanford in 2017.</p>
           <div class ="blurb_title">Recent Tweet</div>
           <div id ="twitter">
             <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/trenthazy" data-widget-id="427151357422747648" data-tweet-limit="1" data-chrome="nofooter noheader transparent" data-border-color="none" >Tweets by @trenthazy</a>
@@ -30,10 +31,126 @@
     </div><!-- /.container -->
     <footer>
         <ul>
-            <li><a href="mailto:t@trenthazy.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> email</a></li>
-            <li><a href="http://www.linkedin.com/in/trenthazy"><i class="fa fa-linkedin-square" aria-hidden="true"></i> linkedin</a></li>
-            <li><a href="https://github.com/trenthazy"><i class="fa fa-github" aria-hidden="true"></i> github</a></li>
+          <li><a href="mailto:t@trenthazy.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> email</a></li>
+          <li><a href="http://www.linkedin.com/in/trenthazy"><i class="fa fa-linkedin-square" aria-hidden="true"></i> linkedin</a></li>
+          <li><a href="https://angel.co/trenthazy"><i class="fa fa-angellist" aria-hidden="true"></i> angellist</a></li>
+          <li><a href="https://github.com/trenthazy"><i class="fa fa-github" aria-hidden="true"></i> github</a></li>
       </ul>
     </footer>
   </body>
 </html>
+
+<script>
+  window.setTimeout(function(){
+    $(".twitter-timeline").contents().find(".e-entry-title").css("font-family","courier");
+    $(".twitter-timeline").contents().find(".e-entry-title").css("color","grey");
+    $(".twitter-timeline").contents().find(".p-name").css("font-family","courier");
+    $(".twitter-timeline").contents().find(".p-name").css("color","grey");
+  }, 1000);
+</script>
+
+
+<!--Twitter -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+ify =  {
+       link: function(tweet) {
+        return tweet.replace(/\b(((https*\:\/\/)|www\.)[^\"\']+?)(([!?,.\)]+)?(\s|$))/g, function(link, m1, m2, m3, m4) {
+            var http = m2.match(/w/) ? 'http://' : '';
+            return '<a class="twtr-hyperlink" target="_blank" href="' + http + m1 + '">' + ((m1.length > 25) ? m1.substr(0, 24) + '...' : m1) + '</a>' + m4;
+        });
+    },
+
+    at: function(tweet) {
+        return tweet.replace(/\B[@＠]([a-zA-Z0-9_]{1,20})/g, function(m, username) {
+            return '<a target="_blank" class="twtr-atreply" href="http://twitter.com/intent/user?screen_name=' + username + '">@' + username + '</a>';
+        });
+    },
+
+    list: function(tweet) {
+        return tweet.replace(/\B[@＠]([a-zA-Z0-9_]{1,20}\/\w+)/g, function(m, userlist) {
+            return '<a target="_blank" class="twtr-atreply" href="http://twitter.com/' + userlist + '">@' + userlist + '</a>';
+        });
+    },
+
+    hash: function(tweet) {
+        return tweet.replace(/(^|\s+)#(\w+)/gi, function(m, before, hash) {
+            return before + '<a target="_blank" class="twtr-hashtag" href="http://twitter.com/search?q=%23' + hash + '">#' + hash + '</a>';
+        });
+    },
+
+    clean: function(tweet) {
+        return this.hash(this.at(this.list(this.link(tweet))));
+    }
+  } // ify
+
+$.getJSON("https://api.twitter.com/1/statuses/user_timeline/trenthazy.json?count=1&include_rts=1&callback=?", function(data) {
+     $("#twitter").html(ify.clean(data[0].text));
+});
+</script>
+
+<script type="text/javascript">
+$.getJSON("https://api.twitter.com/1/statuses/user_timeline/trenthazy.json?count=1&include_rts=1&callback=?", function(data) {
+     $("#tweet_date").html(prettyDate(data[0].created_at));
+});
+</script>
+
+<script type="text/javascript">
+/*
+ * JavaScript Pretty Date
+ * Copyright (c) 2011 John Resig (ejohn.org)
+ * Licensed under the MIT and GPL licenses.
+ */
+
+// Takes an ISO time and returns a string representing how
+// long ago the date represents.
+function prettyDate(time){
+    var date = new Date((time || "").replace(/-/g,"/").replace(/[TZ]/g," ")),
+        diff = (((new Date()).getTime() - date.getTime()) / 1000),
+        day_diff = Math.floor(diff / 86400);
+            
+    if ( isNaN(day_diff) || day_diff < 0 || day_diff >= 31 )
+        return;
+            
+    return day_diff == 0 && (
+            diff < 60 && "just now" ||
+            diff < 120 && "1 minute ago" ||
+            diff < 3600 && Math.floor( diff / 60 ) + " minutes ago" ||
+            diff < 7200 && "1 hour ago" ||
+            diff < 86400 && Math.floor( diff / 3600 ) + " hours ago") ||
+        day_diff == 1 && "Yesterday" ||
+        day_diff < 7 && day_diff + " days ago" ||
+        day_diff < 31 && Math.ceil( day_diff / 7 ) + " weeks ago";
+}
+
+// If jQuery is included in the page, adds a jQuery plugin to handle it as well
+if ( typeof jQuery != "undefined" )
+    jQuery.fn.prettyDate = function(){
+        return this.each(function(){
+            var date = prettyDate(this.title);
+            if ( date )
+                jQuery(this).text( date );
+        });
+    };
+</script>
+
+<!--Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37065437-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<script type="text/javascript"
+        src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">

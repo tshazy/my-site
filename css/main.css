@@ -3,7 +3,7 @@ body {
     width: 100%;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
-frame{
+.frame{
     margin: 60px auto;
     width: 70%;   
 }
@@ -48,7 +48,7 @@ ul.posts li {
 }
 
 .hero{
-    background: asset-url('https://i.imgur.com/suqQlYe.jpg)') no-repeat left top;
+    background: url('https://i.imgur.com/suqQlYe.jpg') no-repeat left top;
     padding: 70px 0px;
     background-color: #000000;
     background-size: cover;

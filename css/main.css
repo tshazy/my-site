@@ -1,7 +1,11 @@
 body {
-    margin: 60px auto;
-    width: 70%;
+    margin: 0;
+    width: 100%;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
+}
+frame{
+    margin: 60px auto;
+    width: 70%;   
 }
 nav ul, footer ul {
     padding: 0px;
@@ -41,6 +45,27 @@ ul.posts {
 
 ul.posts li {
     list-style: none;
+}
+
+.hero{
+    background: asset-url('https://i.imgur.com/suqQlYe.jpg)') no-repeat left top;
+    padding: 70px 0px;
+    background-color: #000000;
+    background-size: cover;
+    -webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    background-size: 100% auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: visible;
+    text-shadow: 0px 0px 6px #402c2d;
+}
+
+.blurb{
+    color: white;
 }
 
 @media only screen

@@ -48,7 +48,7 @@ ul.posts li {
 }
 
 .hero{
-    background: url(https://i.imgur.com/y83C8sK.jpg) no-repeat left bottom;
+    background: url(https://i.imgur.com/y83C8sK.jpg) no-repeat right bottom;
     padding: 110px 0 130px 0;
     background-color: #000;
     background-size: cover;
@@ -72,7 +72,7 @@ ul.posts li {
 and (min-width : 320px)
 and (max-width : 480px) {
     body{
-       font-size: 130%; 
+       font-size: 115%; 
        min-width: 320px;
     }
 }

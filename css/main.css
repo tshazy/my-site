@@ -68,7 +68,7 @@ ul.posts li {
     display: flex;
 }
 
-.blurb{
+.hero_blurb{
     color: white;
 }
 
@@ -83,5 +83,8 @@ and (max-width : 600px) {
     }
     p{
         font-size: 1.2em;
+    }
+    .hero_blurb{
+        margin-top: 100px;
     }
 }

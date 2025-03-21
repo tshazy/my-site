@@ -79,4 +79,7 @@ and (max-width : 480px) {
        font-size: 100%; 
        min-width: 320px;
     }
+    h1, p {
+        font-size: 70%;
+    }
 }
